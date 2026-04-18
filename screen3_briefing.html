@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Briefing: Mustermann Bürotechnik GmbH - Preplo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dad9dd",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-tertiary-fixed-variant": "#60410c",
+                        "on-secondary-container": "#5a6374",
+                        "on-secondary-fixed": "#121c2a",
+                        "surface-bright": "#faf9fc",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e9e7eb",
+                        "on-surface": "#1a1c1e",
+                        "tertiary-fixed-dim": "#edbf7f",
+                        "on-primary-fixed-variant": "#2d486d",
+                        "primary-container": "#1e3a5f",
+                        "on-tertiary-container": "#c69b5f",
+                        "on-primary-container": "#8aa4cf",
+                        "secondary-fixed": "#d9e3f7",
+                        "on-secondary-fixed-variant": "#3e4757",
+                        "inverse-primary": "#adc8f5",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eeedf1",
+                        "outline-variant": "#c4c6cf",
+                        "on-error-container": "#93000a",
+                        "primary": "#022448",
+                        "on-tertiary-fixed": "#291800",
+                        "background": "#faf9fc",
+                        "surface-variant": "#e3e2e6",
+                        "on-background": "#1a1c1e",
+                        "on-primary-fixed": "#001c3b",
+                        "surface-container-low": "#f4f3f7",
+                        "secondary-container": "#d6e0f4",
+                        "on-error": "#ffffff",
+                        "outline": "#74777f",
+                        "inverse-on-surface": "#f1f0f4",
+                        "primary-fixed-dim": "#adc8f5",
+                        "tertiary-fixed": "#ffddb2",
+                        "on-surface-variant": "#43474e",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#455f87",
+                        "inverse-surface": "#2f3033",
+                        "secondary-fixed-dim": "#bdc7da",
+                        "surface": "#faf9fc",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#341f00",
+                        "secondary": "#555f70",
+                        "tertiary-container": "#503300",
+                        "primary-fixed": "#d5e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar Component (Semantic Shell: Required for Destination) -->
+<nav class="bg-[#faf9fc]/70 dark:bg-[#1a1c1e]/70 backdrop-blur-xl font-['Inter'] antialiased leading-relaxed tracking-tight docked full-width top-0 sticky shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] z-50">
+<div class="flex justify-between items-center h-20 px-12 w-full max-w-[1440px] mx-auto bg-[#f4f3f7] dark:bg-[#1a1c1e] transition-colors duration-300">
+<div class="text-2xl font-bold tracking-[-0.02em] text-[#022448] dark:text-[#faf9fc]">Preplo</div>
+<div class="hidden md:flex space-x-8">
+<a class="text-[#1a1c1e]/60 dark:text-[#e3e2e6]/60 font-medium hover:text-[#022448] dark:hover:text-[#faf9fc] transition-colors hover:bg-[#f4f3f7] dark:hover:bg-[#2c2e30] rounded-md transition-all px-3 py-2" href="#">Dashboard</a>
+<a class="text-[#022448] dark:text-[#faf9fc] font-semibold border-b-2 border-[#022448] dark:border-[#faf9fc] pb-1 px-3 py-2 scale-95 active:scale-90 transition-transform duration-200" href="#">Briefings</a>
+<a class="text-[#1a1c1e]/60 dark:text-[#e3e2e6]/60 font-medium hover:text-[#022448] dark:hover:text-[#faf9fc] transition-colors hover:bg-[#f4f3f7] dark:hover:bg-[#2c2e30] rounded-md transition-all px-3 py-2" href="#">Insights</a>
+</div>
+<div class="flex items-center space-x-4 text-[#022448] dark:text-[#f4f3f7]">
+<button aria-label="picture_as_pdf" class="hover:bg-[#f4f3f7] dark:hover:bg-[#2c2e30] rounded-md transition-all p-2">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</button>
+<button aria-label="share" class="hover:bg-[#f4f3f7] dark:hover:bg-[#2c2e30] rounded-md transition-all p-2">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<button aria-label="settings" class="hover:bg-[#f4f3f7] dark:hover:bg-[#2c2e30] rounded-md transition-all p-2">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="User profile" class="h-8 w-8 rounded-full border border-outline-variant/15 object-cover ml-2" data-alt="professional portrait of a young man with glasses on neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDivUYNDd8zcINu8t65bOO7AeGKTBvyQY-iAbH-xSesg1pfPdB4PRmclupcQJ516DBUNWm3KDBcBYc1oS1J421tW5a2n3qKBICJW82Xo2RDzhR81jcV411vocxog1HJrRQWmWCFI-F1H2q9jZI1b_xPecFDR47t0l2BkdawZNefuDz-z2T31g9u8A58Om9ZgFwdb27LMeMTHSgMahcxtvuqhHiteZ8UhWZqSgcRM4iRa_cZYifiz_7lAqdG2xWxqEaCZto9AM7JU3E"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow max-w-5xl mx-auto w-full px-6 py-12 md:py-20 flex flex-col items-center">
+<!-- Header Section -->
+<div class="w-full flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-2">BRIEFING ERGEBNIS</p>
+<h1 class="text-[32px] md:text-[56px] font-bold text-on-surface leading-[1.1] tracking-[-0.02em]">Mustermann Bürotechnik GmbH</h1>
+</div>
+<div class="flex space-x-3 shrink-0">
+<button class="flex items-center space-x-2 bg-surface-container-highest hover:bg-surface-dim text-on-surface-variant px-4 py-2 rounded-md transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Als PDF</span>
+</button>
+<button class="flex items-center space-x-2 bg-surface-container-highest hover:bg-surface-dim text-on-surface-variant px-4 py-2 rounded-md transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Teilen</span>
+</button>
+</div>
+</div>
+<!-- 2x2 Grid -->
+<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+<!-- Card 1: Gesprächseinstiege -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+<div class="flex items-center space-x-3 mb-6">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<h2 class="text-[28px] font-bold text-on-surface">Gesprächseinstiege</h2>
+</div>
+<div class="space-y-6 flex-grow">
+<div class="flex gap-4">
+<span class="text-primary font-bold text-lg">1.</span>
+<p class="text-[16px] text-on-surface leading-[1.6]">"Ich habe gelesen, dass Sie im letzten Quartal stark expandiert sind. Wie managen Sie aktuell die wachsende IT-Infrastruktur an den neuen Standorten?"</p>
+</div>
+<div class="flex gap-4">
+<span class="text-primary font-bold text-lg">2.</span>
+<p class="text-[16px] text-on-surface leading-[1.6]">"Gratulation zur Auszeichnung 'Innovator des Jahres'. Welche Rolle spielte die Digitalisierung Ihrer internen Prozesse bei diesem Erfolg?"</p>
+</div>
+<div class="flex gap-4">
+<span class="text-primary font-bold text-lg">3.</span>
+<p class="text-[16px] text-on-surface leading-[1.6]">"Die aktuellen Lieferengpässe in der Branche betreffen viele. Wie stellen Sie die termingerechte Ausstattung Ihrer Großkunden sicher?"</p>
+</div>
+</div>
+</div>
+<!-- Card 2: Wachstumssignale -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+<div class="flex items-center space-x-3 mb-6">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<h2 class="text-[28px] font-bold text-on-surface">Wachstumssignale</h2>
+</div>
+<ul class="space-y-4 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1 text-[20px]">check_circle</span>
+<span class="text-[16px] text-on-surface leading-[1.6]"><strong>Neue Standorte:</strong> Eröffnung von zwei neuen Logistikzentren in Süddeutschland im letzten Halbjahr.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1 text-[20px]">check_circle</span>
+<span class="text-[16px] text-on-surface leading-[1.6]"><strong>Stellenaufbau:</strong> Aktuell 15 offene Vakanzen im Bereich IT-Consulting und Vertrieb.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1 text-[20px]">check_circle</span>
+<span class="text-[16px] text-on-surface leading-[1.6]"><strong>Technologie-Investment:</strong> Kürzliche Einführung eines neuen cloudbasierten ERP-Systems zur Prozessoptimierung.</span>
+</li>
+</ul>
+</div>
+<!-- Card 3: Firmenprofil -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+<div class="flex items-center space-x-3 mb-6">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">business</span>
+</div>
+<h2 class="text-[28px] font-bold text-on-surface">Firmenprofil</h2>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-4 flex-grow">
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">BRANCHE</p>
+<p class="text-[16px] text-on-surface">Bürotechnik &amp; IT-Dienstleistungen</p>
+</div>
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">MITARBEITER</p>
+<p class="text-[16px] text-on-surface">ca. 250 - 500</p>
+</div>
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">STANDORTE</p>
+<p class="text-[16px] text-on-surface">München (HQ), Stuttgart, Frankfurt</p>
+</div>
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">GEGRÜNDET</p>
+<p class="text-[16px] text-on-surface">1998</p>
+</div>
+</div>
+</div>
+<!-- Card 4: Aktuelle News -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+<div class="flex items-center space-x-3 mb-6">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">newspaper</span>
+</div>
+<h2 class="text-[28px] font-bold text-on-surface">Aktuelle News</h2>
+</div>
+<div class="space-y-6 flex-grow">
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">12. OKTOBER 2023</p>
+<p class="text-[16px] text-on-surface leading-[1.6]">Mustermann Bürotechnik übernimmt regionalen Konkurrenten "BüroWelt Süd" zur Stärkung der Marktposition.</p>
+</div>
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">05. SEPTEMBER 2023</p>
+<p class="text-[16px] text-on-surface leading-[1.6]">Auszeichnung als "Top Arbeitgeber Mittelstand 2023" durch branchenführendes Wirtschaftsmagazin verliehen.</p>
+</div>
+<div>
+<p class="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">18. AUGUST 2023</p>
+<p class="text-[16px] text-on-surface leading-[1.6]">Launch der neuen Nachhaltigkeitsinitiative: Bis 2025 sollen alle Logistikprozesse klimaneutral gestaltet werden.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feedback Section -->
+<div class="flex flex-col items-center justify-center pt-8 border-t border-outline-variant/15 w-full max-w-md">
+<p class="text-[16px] font-medium text-on-surface mb-4">War dieses Briefing hilfreich?</p>
+<div class="flex space-x-4">
+<button class="h-12 w-12 rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-highest hover:text-primary transition-colors flex items-center justify-center focus:ring-2 focus:ring-primary/20 outline-none">
+<span class="material-symbols-outlined">thumb_up</span>
+</button>
+<button class="h-12 w-12 rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-highest hover:text-error transition-colors flex items-center justify-center focus:ring-2 focus:ring-primary/20 outline-none">
+<span class="material-symbols-outlined">thumb_down</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>
