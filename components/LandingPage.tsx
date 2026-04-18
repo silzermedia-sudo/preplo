@@ -119,10 +119,10 @@ export default function LandingPage() {
                   ['Standorte:', 'München, Stuttgart'],
                   ['Gegründet:', '1998'],
                 ].map(([label, value]) => (
-                  <>
-                    <div key={`l-${label}`} className="text-on-surface-variant/70">{label}</div>
-                    <div key={`v-${label}`} className="text-on-surface font-medium">{value}</div>
-                  </>
+                  <div key={label} className="contents">
+                    <div className="text-on-surface-variant/70">{label}</div>
+                    <div className="text-on-surface font-medium">{value}</div>
+                  </div>
                 ))}
               </div>
             </div>
