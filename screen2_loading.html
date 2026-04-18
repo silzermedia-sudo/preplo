@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Preplo - Briefing wird erstellt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#43474e",
+                        "on-secondary-fixed-variant": "#3e4757",
+                        "surface-tint": "#455f87",
+                        "primary-fixed-dim": "#adc8f5",
+                        "outline": "#74777f",
+                        "tertiary-fixed-dim": "#edbf7f",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#291800",
+                        "surface-container": "#eeedf1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#bdc7da",
+                        "inverse-primary": "#adc8f5",
+                        "background": "#faf9fc",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f4f3f7",
+                        "surface-container-high": "#e9e7eb",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-highest": "#e3e2e6",
+                        "surface-dim": "#dad9dd",
+                        "secondary-container": "#d6e0f4",
+                        "surface-bright": "#faf9fc",
+                        "on-secondary-fixed": "#121c2a",
+                        "on-background": "#1a1c1e",
+                        "surface": "#faf9fc",
+                        "on-surface": "#1a1c1e",
+                        "on-primary-fixed-variant": "#2d486d",
+                        "tertiary-fixed": "#ffddb2",
+                        "on-primary-fixed": "#001c3b",
+                        "primary-fixed": "#d5e3ff",
+                        "on-tertiary-container": "#c69b5f",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2e6",
+                        "inverse-surface": "#2f3033",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#341f00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#8aa4cf",
+                        "on-tertiary-fixed-variant": "#60410c",
+                        "primary-container": "#1e3a5f",
+                        "on-secondary-container": "#5a6374",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#d9e3f7",
+                        "inverse-on-surface": "#f1f0f4",
+                        "error-container": "#ffdad6",
+                        "secondary": "#555f70",
+                        "primary": "#022448",
+                        "tertiary-container": "#503300"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .progress-indeterminate {
+            animation: progress-indeterminate 2s infinite linear;
+            transform-origin: 0% 50%;
+        }
+        @keyframes progress-indeterminate {
+            0% { transform: translateX(0) scaleX(0); }
+            40% { transform: translateX(0) scaleX(0.4); }
+            100% { transform: translateX(100%) scaleX(0.5); }
+        }
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell Suppressed as per instructions for linear/transactional/loading screens -->
+<main class="flex-grow flex items-center justify-center p-6 md:p-12 relative z-10 overflow-hidden">
+<!-- Ambient Background Decoration (Subtle Glass Texture) -->
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+</div>
+<div class="w-full max-w-2xl bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/15 p-12 md:p-16 flex flex-col items-center text-center relative z-20">
+<!-- Header Section -->
+<div class="mb-10 w-full">
+<h2 class="font-headline text-[28px] font-bold tracking-tight text-on-surface mb-3">
+                    Mustermann Bürotechnik GmbH
+                </h2>
+<p class="font-body text-base text-on-surface-variant max-w-[60ch] mx-auto leading-relaxed">
+                    Briefing wird erstellt...
+                </p>
+</div>
+<!-- Progress Bar Section -->
+<div class="w-full max-w-md mb-12">
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden relative">
+<!-- Progress Fill -->
+<div class="absolute top-0 left-0 h-full w-[60%] bg-gradient-to-r from-primary to-primary-container rounded-full transition-all duration-500 ease-out"></div>
+</div>
+</div>
+<!-- Status Steps List -->
+<div class="w-full max-w-md text-left flex flex-col gap-6 mb-12">
+<!-- Step 1: Done -->
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-container" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-body text-[16px] text-on-surface-variant leading-tight">Website analysiert</span>
+</div>
+<!-- Step 2: Done -->
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-container" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-body text-[16px] text-on-surface-variant leading-tight">News der letzten 30 Tage gefunden</span>
+</div>
+<!-- Step 3: Active -->
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-primary-container spin" data-icon="sync" data-weight="fill">sync</span>
+</div>
+<span class="font-body text-[16px] font-medium text-on-surface leading-tight">Wachstumssignale werden ausgewertet...</span>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex items-center gap-4 opacity-50">
+<div class="flex-shrink-0 w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<!-- Empty circle -->
+</div>
+<span class="font-body text-[16px] text-on-surface-variant leading-tight">Gesprächseinstiege werden generiert</span>
+</div>
+</div>
+<!-- Footer Note -->
+<div class="mt-4">
+<p class="font-label text-[12px] uppercase tracking-[0.05em] text-outline">
+                    Dauert meist unter 60 Sekunden
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell Suppressed as per instructions for linear/transactional/loading screens -->
+</body></html>
