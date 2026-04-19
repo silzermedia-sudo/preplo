@@ -14,43 +14,35 @@ export async function POST(request: NextRequest) {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      global: {
-        headers: { Cookie: request.headers.get('cookie') ?? '' },
-      },
-    }
+    { global: { headers: { Cookie: request.headers.get('cookie') ?? '' } } }
   )
-
   const { data: { user } } = await supabase.auth.getUser()
-
-  if (!user) {
-    return NextResponse.json({ error: 'UNAUTHENTICATED' }, { status: 401 })
-  }
 
   const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
-  // Freemium-Check
-  const thisMonth = new Date().toISOString().slice(0, 7)
-
-  const { data: profile } = await supabaseAdmin
-    .from('profiles')
-    .select('plan')
-    .eq('id', user.id)
-    .single()
-
-  if (profile?.plan === 'free') {
-    const { data: usage } = await supabaseAdmin
-      .from('usage')
-      .select('count')
-      .eq('user_id', user.id)
-      .eq('month', thisMonth)
+  // Freemium-Check (nur wenn eingeloggt)
+  if (user) {
+    const thisMonth = new Date().toISOString().slice(0, 7)
+    const { data: profile } = await supabaseAdmin
+      .from('profiles')
+      .select('plan')
+      .eq('id', user.id)
       .single()
 
-    if ((usage?.count ?? 0) >= 3) {
-      return NextResponse.json({ error: 'UPGRADE_REQUIRED' }, { status: 402 })
+    if (profile?.plan === 'free') {
+      const { data: usage } = await supabaseAdmin
+        .from('usage')
+        .select('count')
+        .eq('user_id', user.id)
+        .eq('month', thisMonth)
+        .single()
+
+      if ((usage?.count ?? 0) >= 3) {
+        return NextResponse.json({ error: 'UPGRADE_REQUIRED' }, { status: 402 })
+      }
     }
   }
 
@@ -82,11 +74,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Ungültiges JSON von KI' }, { status: 500 })
   }
 
-  // Briefing in Supabase speichern
+  // Briefing speichern (mit oder ohne User)
   const { data: briefing, error: insertError } = await supabaseAdmin
     .from('briefings')
     .insert({
-      user_id: user.id,
+      user_id: user?.id ?? null,
       company_name: company.trim(),
       company_url: url?.trim() || null,
       output,
@@ -95,22 +87,27 @@ export async function POST(request: NextRequest) {
     .single()
 
   if (insertError) {
-    return NextResponse.json({ error: 'Fehler beim Speichern' }, { status: 500 })
+    // Wenn Supabase noch nicht eingerichtet: Ergebnis direkt zurückgeben
+    const tempId = crypto.randomUUID()
+    return NextResponse.json({ id: tempId, output })
   }
 
-  // Usage-Zähler erhöhen
-  const { data: currentUsage } = await supabaseAdmin
-    .from('usage')
-    .select('count')
-    .eq('user_id', user.id)
-    .eq('month', thisMonth)
-    .single()
+  // Usage-Zähler erhöhen (nur wenn eingeloggt)
+  if (user) {
+    const thisMonth = new Date().toISOString().slice(0, 7)
+    const { data: currentUsage } = await supabaseAdmin
+      .from('usage')
+      .select('count')
+      .eq('user_id', user.id)
+      .eq('month', thisMonth)
+      .single()
 
-  await supabaseAdmin.from('usage').upsert({
-    user_id: user.id,
-    month: thisMonth,
-    count: (currentUsage?.count ?? 0) + 1,
-  })
+    await supabaseAdmin.from('usage').upsert({
+      user_id: user.id,
+      month: thisMonth,
+      count: (currentUsage?.count ?? 0) + 1,
+    })
+  }
 
   return NextResponse.json({ id: briefing.id })
 }
