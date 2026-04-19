@@ -60,17 +60,25 @@ export async function POST(request: NextRequest) {
     ],
   })
 
-  // JSON aus der Antwort extrahieren
-  const textBlock = response.content.find((b) => b.type === 'text')
-  if (!textBlock || textBlock.type !== 'text') {
+  // JSON aus der Antwort extrahieren (alle Text-Blöcke zusammenführen)
+  const allText = response.content
+    .filter((b) => b.type === 'text')
+    .map((b) => (b as { type: 'text'; text: string }).text)
+    .join('')
+
+  if (!allText) {
     return NextResponse.json({ error: 'Keine Antwort von KI' }, { status: 500 })
   }
 
   let output: BriefingOutput
   try {
-    const jsonMatch = textBlock.text.match(/\{[\s\S]*\}/)
-    output = JSON.parse(jsonMatch?.[0] ?? textBlock.text)
-  } catch {
+    // Markdown-Codeblöcke entfernen, dann JSON extrahieren
+    const cleaned = allText.replace(/```json\n?/g, '').replace(/```\n?/g, '')
+    const jsonMatch = cleaned.match(/\{[\s\S]*\}/)
+    if (!jsonMatch) throw new Error('Kein JSON gefunden')
+    output = JSON.parse(jsonMatch[0])
+  } catch (e) {
+    console.error('KI Antwort:', allText)
     return NextResponse.json({ error: 'Ungültiges JSON von KI' }, { status: 500 })
   }
 
