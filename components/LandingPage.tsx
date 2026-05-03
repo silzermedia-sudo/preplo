@@ -66,10 +66,10 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Widget 1: Gesprächseinstiege */}
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15">
+            {/* Widget 1: Gesprächseinstiege — Blau */}
+            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_0_rgba(59,130,246,0.12)] hover:ring-1 hover:ring-blue-200 cursor-default">
               <h3 className="flex items-center gap-2 text-[16px] font-bold text-on-surface mb-4">
-                <span className="material-symbols-outlined text-primary text-[20px]">chat_bubble</span>
+                <span className="material-symbols-outlined text-blue-500 text-[20px]">chat_bubble</span>
                 Gesprächseinstiege
               </h3>
               <ul className="space-y-3 text-[14px] text-on-surface-variant font-body leading-[1.6]">
@@ -79,17 +79,17 @@ export default function LandingPage() {
                   'Erwähnen des kürzlich abgeschlossenen HP-Deals.',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-primary/60 text-[16px] mt-1">check_circle</span>
+                    <span className="material-symbols-outlined text-blue-400 text-[16px] mt-1">check_circle</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Widget 2: Wachstumssignale */}
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15">
+            {/* Widget 2: Wachstumssignale — Grün */}
+            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_0_rgba(16,185,129,0.12)] hover:ring-1 hover:ring-emerald-200 cursor-default">
               <h3 className="flex items-center gap-2 text-[16px] font-bold text-on-surface mb-4">
-                <span className="material-symbols-outlined text-primary text-[20px]">trending_up</span>
+                <span className="material-symbols-outlined text-emerald-500 text-[20px]">trending_up</span>
                 Wachstumssignale
               </h3>
               <ul className="space-y-3 text-[14px] text-on-surface-variant font-body leading-[1.6]">
@@ -99,17 +99,17 @@ export default function LandingPage() {
                   'Umsatzwachstum im Bereich IT-Infrastruktur.',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-primary/60 text-[16px] mt-1">check_circle</span>
+                    <span className="material-symbols-outlined text-emerald-400 text-[16px] mt-1">check_circle</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Widget 3: Firmenprofil */}
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15">
+            {/* Widget 3: Firmenprofil — Violett */}
+            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_0_rgba(139,92,246,0.12)] hover:ring-1 hover:ring-violet-200 cursor-default">
               <h3 className="flex items-center gap-2 text-[16px] font-bold text-on-surface mb-4">
-                <span className="material-symbols-outlined text-primary text-[20px]">business</span>
+                <span className="material-symbols-outlined text-violet-500 text-[20px]">business</span>
                 Firmenprofil
               </h3>
               <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-[14px] font-body">
@@ -127,10 +127,10 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Widget 4: Aktuelle News */}
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15">
+            {/* Widget 4: Aktuelle News — Amber */}
+            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_0_rgba(245,158,11,0.12)] hover:ring-1 hover:ring-amber-200 cursor-default">
               <h3 className="flex items-center gap-2 text-[16px] font-bold text-on-surface mb-4">
-                <span className="material-symbols-outlined text-primary text-[20px]">newspaper</span>
+                <span className="material-symbols-outlined text-amber-500 text-[20px]">newspaper</span>
                 Aktuelle News
               </h3>
               <ul className="space-y-3 text-[14px] text-on-surface-variant font-body leading-[1.6]">
@@ -140,7 +140,7 @@ export default function LandingPage() {
                   'Umzug in ein größeres Büro in München (Vor 3 Monaten)',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="text-primary/60 text-[16px] mt-0.5">•</span>
+                    <span className="text-amber-400 text-[16px] mt-0.5">•</span>
                     {item}
                   </li>
                 ))}

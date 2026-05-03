@@ -7,7 +7,7 @@ import type { User } from '@supabase/supabase-js'
 
 interface NavbarProps {
   variant?: 'landing' | 'app'
-  activeNav?: 'dashboard' | 'briefings' | 'insights'
+  activeNav?: 'briefings' | 'verlauf'
   onPdfExport?: () => void
   onShare?: () => void
 }
@@ -34,32 +34,32 @@ export default function Navbar({ variant = 'landing', activeNav = 'briefings', o
         <div className="flex justify-between items-center h-20 px-12 w-full max-w-[1440px] mx-auto bg-[#f4f3f7] transition-colors duration-300">
           <Link href="/" className="text-2xl font-bold tracking-[-0.02em] text-[#022448]">Preplo</Link>
           <div className="hidden md:flex space-x-8">
-            {(['dashboard', 'briefings', 'insights'] as const).map((nav) => (
+            {([['briefings', '/'], ['verlauf', '/verlauf']] as const).map(([nav, href]) => (
               <Link
                 key={nav}
-                href={nav === 'dashboard' ? '/dashboard' : '#'}
+                href={href}
                 className={`font-medium transition-all rounded-md px-3 py-2 capitalize ${
                   activeNav === nav
                     ? 'text-[#022448] font-semibold border-b-2 border-[#022448]'
-                    : 'text-[#1a1c1e]/60 hover:text-[#022448] hover:bg-[#f4f3f7]'
+                    : 'text-[#1a1c1e]/60 hover:text-[#022448] hover:bg-[#ebe9ef]'
                 }`}
               >
-                {nav.charAt(0).toUpperCase() + nav.slice(1)}
+                {nav === 'briefings' ? 'Briefings' : 'Verlauf'}
               </Link>
             ))}
           </div>
           <div className="flex items-center space-x-4 text-[#022448]">
             {onPdfExport && (
-              <button onClick={onPdfExport} aria-label="Als PDF exportieren" className="hover:bg-[#f4f3f7] rounded-md transition-all p-2">
+              <button onClick={onPdfExport} aria-label="Als PDF exportieren" className="hover:bg-[#ebe9ef] rounded-md transition-all p-2">
                 <span className="material-symbols-outlined">picture_as_pdf</span>
               </button>
             )}
             {onShare && (
-              <button onClick={onShare} aria-label="Teilen" className="hover:bg-[#f4f3f7] rounded-md transition-all p-2">
+              <button onClick={onShare} aria-label="Teilen" className="hover:bg-[#ebe9ef] rounded-md transition-all p-2">
                 <span className="material-symbols-outlined">share</span>
               </button>
             )}
-            <button onClick={handleSignOut} aria-label="Abmelden" className="hover:bg-[#f4f3f7] rounded-md transition-all p-2">
+            <button onClick={handleSignOut} aria-label="Abmelden" className="hover:bg-[#ebe9ef] rounded-md transition-all p-2">
               <span className="material-symbols-outlined">logout</span>
             </button>
             <div className="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center ml-2" title={user?.email ?? ''}>

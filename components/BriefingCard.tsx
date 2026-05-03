@@ -9,6 +9,29 @@ interface BriefingCardProps {
   output: BriefingOutput
 }
 
+const cardStyles = [
+  {
+    wrapper: 'hover:ring-blue-200 hover:shadow-[0_16px_48px_0_rgba(59,130,246,0.12)]',
+    icon: 'bg-blue-100 text-blue-600',
+    accent: 'text-blue-600',
+  },
+  {
+    wrapper: 'hover:ring-emerald-200 hover:shadow-[0_16px_48px_0_rgba(16,185,129,0.12)]',
+    icon: 'bg-emerald-100 text-emerald-600',
+    accent: 'text-emerald-600',
+  },
+  {
+    wrapper: 'hover:ring-violet-200 hover:shadow-[0_16px_48px_0_rgba(139,92,246,0.12)]',
+    icon: 'bg-violet-100 text-violet-600',
+    accent: 'text-violet-600',
+  },
+  {
+    wrapper: 'hover:ring-amber-200 hover:shadow-[0_16px_48px_0_rgba(245,158,11,0.12)]',
+    icon: 'bg-amber-100 text-amber-600',
+    accent: 'text-amber-600',
+  },
+]
+
 export default function BriefingCard({ companyName, output }: BriefingCardProps) {
   const contentRef = useRef<HTMLDivElement>(null)
 
@@ -34,6 +57,8 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
       await navigator.clipboard.writeText(window.location.href)
     }
   }
+
+  const cardBase = 'bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col transition-all duration-200 hover:-translate-y-1 cursor-default'
 
   return (
     <div className="bg-surface text-on-surface min-h-screen flex flex-col">
@@ -70,10 +95,10 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
 
         {/* 2x2 Grid */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
-          {/* Card 1: Gesprächseinstiege */}
-          <div className="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+          {/* Card 1: Gesprächseinstiege — Blau */}
+          <div className={`${cardBase} ${cardStyles[0].wrapper}`}>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+              <div className={`h-10 w-10 rounded-full flex items-center justify-center ${cardStyles[0].icon}`}>
                 <span className="material-symbols-outlined">forum</span>
               </div>
               <h2 className="text-[28px] font-bold text-on-surface">Gesprächseinstiege</h2>
@@ -81,17 +106,17 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
             <div className="space-y-6 flex-grow">
               {output.gesprachseinstiege.map((text, i) => (
                 <div key={i} className="flex gap-4">
-                  <span className="text-primary font-bold text-lg shrink-0">{i + 1}.</span>
+                  <span className={`font-bold text-lg shrink-0 ${cardStyles[0].accent}`}>{i + 1}.</span>
                   <p className="text-[16px] text-on-surface leading-[1.6]">&ldquo;{text}&rdquo;</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Card 2: Wachstumssignale */}
-          <div className="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+          {/* Card 2: Wachstumssignale — Grün */}
+          <div className={`${cardBase} ${cardStyles[1].wrapper}`}>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+              <div className={`h-10 w-10 rounded-full flex items-center justify-center ${cardStyles[1].icon}`}>
                 <span className="material-symbols-outlined">trending_up</span>
               </div>
               <h2 className="text-[28px] font-bold text-on-surface">Wachstumssignale</h2>
@@ -99,7 +124,7 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
             <ul className="space-y-4 flex-grow">
               {output.wachstumssignale.map((signal, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-primary mt-1 text-[20px]">check_circle</span>
+                  <span className={`material-symbols-outlined mt-1 text-[20px] ${cardStyles[1].accent}`}>check_circle</span>
                   <span className="text-[16px] text-on-surface leading-[1.6]">
                     <strong>{signal.label}:</strong> {signal.text}
                   </span>
@@ -108,10 +133,10 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
             </ul>
           </div>
 
-          {/* Card 3: Firmenprofil */}
-          <div className="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+          {/* Card 3: Firmenprofil — Violett */}
+          <div className={`${cardBase} ${cardStyles[2].wrapper}`}>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+              <div className={`h-10 w-10 rounded-full flex items-center justify-center ${cardStyles[2].icon}`}>
                 <span className="material-symbols-outlined">business</span>
               </div>
               <h2 className="text-[28px] font-bold text-on-surface">Firmenprofil</h2>
@@ -133,10 +158,10 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
             </div>
           </div>
 
-          {/* Card 4: Aktuelle News */}
-          <div className="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] ring-1 ring-outline-variant/15 flex flex-col">
+          {/* Card 4: Aktuelle News — Amber */}
+          <div className={`${cardBase} ${cardStyles[3].wrapper}`}>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+              <div className={`h-10 w-10 rounded-full flex items-center justify-center ${cardStyles[3].icon}`}>
                 <span className="material-symbols-outlined">newspaper</span>
               </div>
               <h2 className="text-[28px] font-bold text-on-surface">Aktuelle News</h2>
@@ -144,7 +169,7 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
             <div className="space-y-6 flex-grow">
               {output.aktuelle_news.map((news, i) => (
                 <div key={i}>
-                  <p className="text-[12px] uppercase tracking-[0.05em] text-on-surface-variant font-semibold mb-1">
+                  <p className={`text-[12px] uppercase tracking-[0.05em] font-semibold mb-1 ${cardStyles[3].accent}`}>
                     {news.datum}
                   </p>
                   <p className="text-[16px] text-on-surface leading-[1.6]">{news.text}</p>
