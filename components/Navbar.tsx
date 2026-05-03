@@ -1,6 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabase'
+import type { User } from '@supabase/supabase-js'
 
 interface NavbarProps {
   variant?: 'landing' | 'app'
@@ -10,6 +13,21 @@ interface NavbarProps {
 }
 
 export default function Navbar({ variant = 'landing', activeNav = 'briefings', onPdfExport, onShare }: NavbarProps) {
+  const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data.user))
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+    return () => subscription.unsubscribe()
+  }, [])
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    window.location.href = '/'
+  }
+
   if (variant === 'app') {
     return (
       <nav className="bg-[#faf9fc]/70 backdrop-blur-xl sticky top-0 shadow-[0_10px_40px_0_rgba(26,28,30,0.04)] z-50">
@@ -41,10 +59,10 @@ export default function Navbar({ variant = 'landing', activeNav = 'briefings', o
                 <span className="material-symbols-outlined">share</span>
               </button>
             )}
-            <Link href="/settings" aria-label="Einstellungen" className="hover:bg-[#f4f3f7] rounded-md transition-all p-2 block">
-              <span className="material-symbols-outlined">settings</span>
-            </Link>
-            <div className="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center ml-2">
+            <button onClick={handleSignOut} aria-label="Abmelden" className="hover:bg-[#f4f3f7] rounded-md transition-all p-2">
+              <span className="material-symbols-outlined">logout</span>
+            </button>
+            <div className="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center ml-2" title={user?.email ?? ''}>
               <span className="material-symbols-outlined text-[16px] text-on-secondary-container">person</span>
             </div>
           </div>
@@ -63,11 +81,23 @@ export default function Navbar({ variant = 'landing', activeNav = 'briefings', o
           <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#">Über uns</a>
           <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#">Kontakt</a>
         </div>
-        <Link href="/login">
-          <button className="bg-transparent border border-outline-variant/30 text-primary px-6 py-2 rounded-md font-medium text-sm hover:bg-surface-container-low transition-colors active:scale-95">
-            Anmelden
-          </button>
-        </Link>
+        {user ? (
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-on-surface-variant hidden md:block">{user.email}</span>
+            <button
+              onClick={handleSignOut}
+              className="bg-transparent border border-outline-variant/30 text-primary px-6 py-2 rounded-md font-medium text-sm hover:bg-surface-container-low transition-colors active:scale-95"
+            >
+              Abmelden
+            </button>
+          </div>
+        ) : (
+          <Link href="/login">
+            <button className="bg-transparent border border-outline-variant/30 text-primary px-6 py-2 rounded-md font-medium text-sm hover:bg-surface-container-low transition-colors active:scale-95">
+              Anmelden
+            </button>
+          </Link>
+        )}
       </div>
     </nav>
   )
