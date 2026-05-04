@@ -76,10 +76,10 @@ export default function Navbar({ variant = 'landing', activeNav = 'briefings', o
       <div className="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
         <Link href="/" className="text-2xl font-bold tracking-tighter text-primary">Preplo</Link>
         <div className="hidden md:flex items-center gap-8">
-          <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#">Leistungen</a>
-          <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#">Methodik</a>
-          <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#">Über uns</a>
-          <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#">Kontakt</a>
+          <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#problem">Problemlösung</a>
+          <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#ueber-uns">Über uns</a>
+          <a className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="#kontakt">Kontakt</a>
+          <Link className="text-on-surface/70 hover:text-primary transition-colors font-medium text-sm tracking-tight" href="/pricing">Pricing</Link>
         </div>
         {user ? (
           <div className="flex items-center gap-3">
