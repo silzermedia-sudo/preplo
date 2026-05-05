@@ -37,7 +37,7 @@ export default function BriefingCard({ companyName, output }: BriefingCardProps)
 
   return (
     <div className="bg-surface text-on-surface min-h-screen flex flex-col">
-      <Navbar variant="app" activeNav="briefings" onPdfExport={handlePdfExport} onShare={handleShare} />
+      <Navbar variant="app" />
 
       <main ref={contentRef} className="flex-grow max-w-5xl mx-auto w-full px-6 py-12 md:py-20 flex flex-col items-center">
         {/* Header */}

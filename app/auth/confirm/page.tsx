@@ -10,10 +10,10 @@ function ConfirmInner() {
 
   useEffect(() => {
     const code = searchParams.get('code')
-    if (!code) { router.replace('/'); return }
+    if (!code) { router.replace('/briefings'); return }
 
     supabase.auth.exchangeCodeForSession(code).then(() => {
-      router.replace('/')
+      router.replace('/briefings')
     }).catch(() => {
       router.replace('/login')
     })

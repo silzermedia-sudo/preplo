@@ -13,10 +13,7 @@ function OAuthHandlerInner() {
     if (!code) return
 
     supabase.auth.exchangeCodeForSession(code).then(() => {
-      // Strip the code from the URL so it doesn't get reused
-      const url = new URL(window.location.href)
-      url.searchParams.delete('code')
-      router.replace(url.pathname + (url.search || ''))
+      router.replace('/briefings')
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

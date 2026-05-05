@@ -18,7 +18,7 @@ export default function RegisterPage() {
     setError(null)
     await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin },
+      options: { redirectTo: `${window.location.origin}/auth/confirm` },
     })
   }
 
@@ -29,7 +29,7 @@ export default function RegisterPage() {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback` },
+      options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/confirm` },
     })
     if (error) { setError(error.message); setLoading(false); return }
     setSuccess(true)

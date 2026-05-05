@@ -19,7 +19,7 @@ export default function LoginPage() {
     setError(null)
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) { setError(error.message); setLoading(false); return }
-    router.push('/')
+    router.push('/briefings')
   }
 
   const handleMagicLink = async () => {
@@ -37,7 +37,7 @@ export default function LoginPage() {
     setError(null)
     await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin },
+      options: { redirectTo: `${window.location.origin}/auth/confirm` },
     })
   }
 
